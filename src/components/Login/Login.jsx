@@ -32,13 +32,13 @@ class Login extends Component {
     });
   }
 
-  loginFaileCallback(email, message){
+  loginFaileCallback(username, message){
     const { setFields } = this.props.form;
     const newValue = {
-      email: {
-        name: "email",
+      username: {
+        name: "username",
         validating: false,
-        value: email,
+        value: username,
         errors: [message]
       }
     };
@@ -47,23 +47,18 @@ class Login extends Component {
 
   render() {
     const { getFieldProps } = this.props.form;
-    const emailProps = getFieldProps('email', {
+    const userProps = getFieldProps('username', {
       validate: [{
         rules: [
-          { required: true }
+          { required: true ,message:'用户名不能为空'}
         ],
         trigger: 'onBlur'
-      }, {
-        rules: [
-          { type: 'email', message: '请输入正确的邮箱地址' }
-        ],
-        trigger: ['onBlur', 'onChange']
       }]
     });
 
     const passwordProps = getFieldProps('password', {
       rules: [
-        { required: true, min: 8, message: '密码至少为 8 个字符' }
+        { required: true, min: 0, message: '密码不能为空' }
       ]
     });
 
@@ -71,12 +66,12 @@ class Login extends Component {
       <div className="login-container">
         <div className="login-mask"/>
         <Form className="login-content" horizontal onSubmit={this.handleSubmit}>
-          <h2>React Redux Demo</h2>
+          <h2>新考勤系统</h2>
           <FormItem label="账号" hasFeedback>
             <Input
-              {...emailProps}
+              {...userProps}
               placeholder="请输入账号"
-              type="email"
+              type="text"
             />
           </FormItem>
           <FormItem label="密码" hasFeedback>

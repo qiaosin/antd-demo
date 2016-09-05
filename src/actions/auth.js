@@ -56,7 +56,7 @@ export function loginUser(creds, cbk) {
     xFetch(API_CONFIG.auth, { method: "POST", body: JSON.stringify(creds) }).then((response) => {
       if (response.jsonResult.error_code === 4001) {
         dispatch(loginError(response.jsonResult.error_message));
-        cbk(creds.email, response.jsonResult.error_message);
+        cbk(creds.username, response.jsonResult.error_message);
       } else {
         cookie.set('access_token', response.jsonResult.access_token);
         dispatch(receiveLogin(response.jsonResult));

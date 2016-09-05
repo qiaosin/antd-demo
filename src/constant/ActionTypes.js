@@ -20,3 +20,6 @@ export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const POST_EDIT_USER = 'POST_ADD_USER';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const DATA_LIST = 'DATA_LIST';
+
+
+export const MENU_LIST = 'MENU_LIST';

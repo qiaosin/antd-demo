@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import {changeRoute} from '../actions/route';
 import * as path from '../constant/uriConfig';
 import {bindActionCreators} from 'redux';
+import xFetch from './../services/xFetch';
+import { API_CONFIG } from './../config/api';
 
 const SubMenu = Menu.SubMenu;
 class AppMenu extends Component {
+  componentWillMount(){
 
+  }
   componentDidMount(){
+    this.getMenu();
     console.log('componentDidMount');
   }
 
@@ -17,14 +22,45 @@ class AppMenu extends Component {
     super(props);
     const {current} = props;
     this.state = {
-      current:current.split(",")
+      current:current.split(","),
+      menustate:false,
+      menulist:[]
     }
-  };
+  }
 
   handleClick(e) {
     this.props.changeRoute(e.key);
-  };
-
+  }
+  getMenu(){
+    xFetch(API_CONFIG.menu, { method: "POST" }).then((response) => {
+      if (response.jsonResult.success) {
+       let menu = this.getSubMenus(response.jsonResult.menulist);
+       //this.props.menulist = menu;
+       this.setState({
+          menustate:true,
+          menulist:menu
+       })
+      } 
+    });
+  }
+  getSubMenus(menus){
+    return menus.map((menu,index)=>{
+      let code = menu.code,
+        title = menu.title,
+        url = menu.url,
+        subMenus = menu.subMenus
+      if(subMenus){
+        return (<SubMenu key={code} title={<span><span>{title}</span></span>} >   
+          {::this.getSubMenus(subMenus)}
+        </SubMenu>)
+      }
+      else {
+        return (
+          <Menu.Item key={code} >{title}</Menu.Item>
+        ) 
+      }
+    });
+  }
   componentWillReceiveProps(props) {
     if(props.path == ''){
       return;
@@ -33,10 +69,14 @@ class AppMenu extends Component {
   }
 
   render() {
-    return (
-      <Menu mode="inline" onClick={this.handleClick.bind(this)} defaultOpenKeys={this.state.current} theme="white"
+
+    let submenu = this.state.menulist;
+
+    
+      if(this.state.menustate){
+       return ( <Menu mode="inline" onClick={this.handleClick.bind(this)} defaultOpenKeys={this.state.current} theme="white"
             selectedKeys={this.state.current}>
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
+        {/*<SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
           <Menu.Item key={path.URI_USER_LIST}>用户管理</Menu.Item>
           <Menu.Item key={path.URI_SAVE_OR_UPDATE_USER}>增加用户</Menu.Item>
           <Menu.Item key={path.URI_REPORTS}>报表</Menu.Item>
@@ -49,9 +89,12 @@ class AppMenu extends Component {
             <Menu.Item key="7">选项7</Menu.Item>
             <Menu.Item key="8">选项8</Menu.Item>
           </SubMenu>
-        </SubMenu>
+        </SubMenu>*/}
+        {submenu}
       </Menu>
-    );
+      );
+      }else return <div></div>;
+      
   };
 }
 

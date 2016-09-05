@@ -21,7 +21,7 @@
   .login-content {
     padding-bottom: 68px;
     border-radius: 8px;
-    box-shadow: 0px 2px 2px 2px rgba(93, 47, 47, 0.59);
+    /*box-shadow: 0px 2px 2px 2px rgba(93, 47, 47, 0.59);*/
     background: #fff;
     z-index: 1;
   }

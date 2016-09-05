@@ -6,7 +6,7 @@ import {Menu} from 'antd';
 import { connect } from 'react-redux'
 import icon from './img/logo.png'
 import defaultUser from './img/defaultUser.jpg'
-import Login from './Login/Login';
+import Login from './Login/Login.jsx';
 import { logoutUser } from './../actions/auth';
 
 const SubMenu = Menu.SubMenu;
@@ -61,7 +61,7 @@ class App extends Component{
           </div>
         </div>
         <div className={styles.foot} id="react-bottom">
-          易云公司 Built with react, react-router, ant-tool, css-modules, antd...
+          2016 © EVUN | 考勤管理系统
         </div>
       </div>
     )

@@ -11,5 +11,6 @@ export const API_CONFIG = {
 	host:host,
 	baseUri:baseUri,
 	auth:'auth',
-	users:'users'
+	users:'users',
+	menu:'menu'
 }

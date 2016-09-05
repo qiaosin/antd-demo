@@ -9,12 +9,18 @@ import PureComponent from '../PureComponent';
 const columns = [{
   title: '姓名',
   dataIndex: 'name',
+  key: 'name',
+  width:200
 }, {
   title: '年龄',
   dataIndex: 'age',
+  key:'age',
+  width:200
 }, {
   title: '住址',
   dataIndex: 'address',
+  key:'address',
+  width:300
 }];
 
 
@@ -43,7 +49,7 @@ class Report extends PureComponent{
         <div onClick={this.initData.bind(this)}>初始化</div>
         <Table columns={columns} dataSource={items} 
                  rowKey={this.key}
-                 scroll={{ x: true, y: 300 }} size='middle'/>
+                 scroll={{ x: true, y: 500 }} size='middle'/>
       </div>
     );
   }
