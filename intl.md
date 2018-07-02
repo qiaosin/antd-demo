@@ -1,6 +1,6 @@
-#noah开发笔记
-##noah 国际化
-###[react-intl-universal](https://github.com/alibaba/react-intl-universal)
+# noah开发笔记
+## noah 国际化
+### [react-intl-universal](https://github.com/alibaba/react-intl-universal)
 使用
 初始化：（Header.jsx）
 ```javascript
@@ -77,8 +77,8 @@ https://www.currency-iso.org/en/home/tables/table-a1.html
 ```javascript
 //设置格式：
 {
-  "SALE_START": "Sale begins {start, date}”,
-  "SALE_END": "Sale ends {end, date, long}”
+	"SALE_START": "Sale begins {start, date}",
+	"SALE_END": "Sale ends {end, date, long}"
 }
 
 //引用：
@@ -92,7 +92,7 @@ intl.get('SALE_END', {end:new Date()}); // Sale ends April 19, 2017
 ```javascript
 //设置格式：
 {
-  "COUPON": "Coupon expires at {expires, time, medium}"
+	"COUPON": "Coupon expires at {expires, time, medium}"
 }
 
 //引用：
@@ -100,23 +100,23 @@ intl.get('COUPON', {expires:new Date()}); // Coupon expires at 6:45:44 PM
 
 //format:short,medium,long
 ```
-###[React-intl](https://github.com/mihuartuanr/React-intl)
+### [React-intl](https://github.com/mihuartuanr/React-intl)
 
 React-intl是FormatJS的一部分，内置实现Date/Number/Time的国际格式化；
 可以自定义映射关系，完成值对之间的替换（这是这篇文章的主要内容）；
 通过获取浏览器的language来设置显示中文/英文（通过自定义映射，而非自动全文转换）；
 常用于实现静态内容，如按钮文字，公司名称的转换；
 
-#####缺陷：
+##### 缺陷：
 * 国际化只能用于View层，也就是只能是React.Componet。如果有一些通用型的utility就不能使用。像是一些表单效验的错误提示如下，这样单纯的js是无法使用react-intl的。
 
 ```javascript
 const rules = {
         noSpace(value) {
-        if (value.includes(' ')) {
-        return '不允许空白或者tab';
-        }
-      }
+    		if (value.includes(' ')) {
+     		return '不允许空白或者tab';
+		    }
+	    }
     };
 ```
 * 无法通过refs属性获取组件实例，需要用getWrappedInstance()代替
@@ -144,7 +144,7 @@ class App {
   }
 }
 ```
-#####附：
+##### 附：
 
 * react高阶组件
 https://segmentfault.com/a/1190000008112017?_ea=1553893
@@ -179,17 +179,17 @@ app初始化时调用patchLanguage.js，改写React.createElement方法，对str
 对需要全局匹配替换语言的组件调用antTranlateWrappedComponent方法，antTranlateWrappedComponent完成两个操作：
 调用蚂蚁金服的国际化组件，对组件内的语音进行国际化操作；
 使用react的context上下文设置language参数，在已被改写的createElement方法中会获取该参数进行判断是否需要进行国际化操作。
-#####附：
+##### 附：
 * 上下文（context）http://www.css88.com/react/docs/context.html
 
     `使用方法：
     export default antTranlateWrappedComponent(Header)
     插件会把组件内所有中文过滤匹配，如果不想对某个文字执行翻译功能，可以用span包裹，并且设置data-translated属性为true`
     
-#####课外：
+##### 课外：
 
 ```javascript
- /[^\u4e00-\u9fa5]/g.test(“为什么很多女生希望嫁给程序员");
+ /[^\u4e00-\u9fa5]/g.test("为什么很多女生希望嫁给程序员");
  false
  /[^\u4e00-\u9fa5]/g.test("为什么很多女生希望嫁给程序员!!!");
  true
@@ -208,9 +208,9 @@ react-intl-universal的简化版，只支持获取字符串，与react-intl-univ
 
 ```javascript
 //引入 
-import i18n from ‘./ofoI18n';
+import i18n from './ofoI18n';
 //使用：
-i18n(‘bikeMap_menuTitle’);
+i18n('bikeMap_menuTitle');
 ```
 
 # Webpack相关
