@@ -22,7 +22,7 @@ intl.init({
 引用：
 
 ```javascript
-intl.get(‘SIMPLE’)
+intl.get('SIMPLE')
 intl.getHTML('TIP');
 ```
 设置默认值:
@@ -182,7 +182,7 @@ app初始化时调用patchLanguage.js，改写React.createElement方法，对str
 ##### 附：
 * 上下文（context）http://www.css88.com/react/docs/context.html
 
-    `使用方法：
+  `使用方法：
     export default antTranlateWrappedComponent(Header)
     插件会把组件内所有中文过滤匹配，如果不想对某个文字执行翻译功能，可以用span包裹，并且设置data-translated属性为true`
     
