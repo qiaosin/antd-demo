@@ -219,6 +219,8 @@ i18n('bikeMap_menuTitle');
 使用时只需要用{antdTranlateWrapped}方法封装一下即可：
 
 ```javascript
+import {antdTranlateWrapped} from 'src/components/AntdTranslate';
+
 export default antdTranlateWrapped(cardRecord);
 ```
 
