@@ -213,6 +213,15 @@ import i18n from './ofoI18n';
 i18n('bikeMap_menuTitle');
 ```
 
+### antd组件国际化
+蚂蚁金服的组件全部支持国际化，只需要按照官方文档操作即可，但是系统内部也对其进行了封装，引用方法如下：
+文件路径：/src/components/AntdTranslate.jsx
+使用时只需要用{antdTranlateWrapped}方法封装一下即可：
+
+```javascript
+export default antdTranlateWrapped(cardRecord);
+```
+
 # Webpack相关
 
 Webpack 中 css import 使用 alias 相对路径:
