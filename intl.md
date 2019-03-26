@@ -1,5 +1,5 @@
-# noah开发笔记
-## noah 国际化
+# 开发笔记
+##  国际化
 ### [react-intl-universal](https://github.com/alibaba/react-intl-universal)
 使用
 初始化：（Header.jsx）
@@ -199,7 +199,7 @@ app初始化时调用patchLanguage.js，改写React.createElement方法，对str
  true
  
 ```
-### ofoI18n.js
+### I18n.js
 
 用于非组件的国际化
 react-intl-universal的简化版，只支持获取字符串，与react-intl-universal共享翻译文件。
@@ -208,7 +208,7 @@ react-intl-universal的简化版，只支持获取字符串，与react-intl-univ
 
 ```javascript
 //引入 
-import i18n from './ofoI18n';
+import i18n from './I18n';
 //使用：
 i18n('bikeMap_menuTitle');
 ```
